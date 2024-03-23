@@ -9,6 +9,8 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+CREATE EXTENSION IF NOT EXISTS pgcrypto CASCADE;
+
 
 --
 -- Name: budgetzen_user_sessions; Type: TABLE; Schema: public; Owner: postgres
