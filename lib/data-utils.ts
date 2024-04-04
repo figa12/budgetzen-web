@@ -115,7 +115,7 @@ export async function deleteUser(userId: string) {
 
 export async function getSessionById(id: string) {
   const session = (await db.query<UserSession>(
-    sql`SELECT * FROM "budgetzen_user_sessions" WHERE "id" = $1 AND "expires_at" > now() LIMIT 1`,
+    sql`SELECT * FROM "budgetzen_user_sessions" WHERE "id" = $1 LIMIT 1`,
     [
       id,
     ],
@@ -132,7 +132,7 @@ export async function createSession(user: User, isNewUser = false) {
     user_id: user.id,
     expires_at: oneMonthFromToday,
     last_seen_at: new Date(),
-    verified: isNewUser,
+    verified: true,
   };
 
   const newUserSessionResult = (await db.query<UserSession>(

@@ -29,7 +29,7 @@ async function validateSession(request: Request) {
 
   const verificationCode = await createVerificationCode(user, session, 'session');
 
-  await sendVerifyLoginEmail(user.email, verificationCode);
+  //await sendVerifyLoginEmail(user.email, verificationCode);
 
   return new Response(JSON.stringify({ user, session_id: session.id }), {
     headers: { 'Content-Type': 'application/json; charset=utf-8' },
